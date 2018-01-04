@@ -13,5 +13,7 @@ inheritanceClass/Content/StarterContent/
 ###################
 #  VS Generated Files   #
 ###################
-
+inheritanceClass/.vs/
+.vs/
 *.VC.db
+
