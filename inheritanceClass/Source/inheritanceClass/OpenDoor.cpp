@@ -26,8 +26,14 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::OpenDoor() {
 	AActor * Owner = GetOwner();
-	FRotator OwnerRotation = FRotator(0.f, 60.f, 0.f);
-	Owner->SetActorRotation(OwnerRotation);
+	Owner->SetActorRotation(FRotator(0.f, ANGLE_OF_DOOR_OPEN, 0.f));
+	this->isDoorOpen = true;
+}
+
+void UOpenDoor::CloseDoor() {
+	AActor * Owner = GetOwner();
+	Owner->SetActorRotation(FRotator(0.f, ANGLE_OF_DOOR_CLOSED, 0.f));
+	this->isDoorOpen = false;
 }
 
 
@@ -40,7 +46,11 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	// If the ActorThatOpens is in the volume
 	if (PressurePlate->IsOverlappingActor(ActorThatOpens)) {
 		OpenDoor();
-
+		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
 	}
+	else if (isDoorOpen && GetWorld()->GetTimeSeconds()  > (LastDoorOpenTime+ DOOR_CLOSE_DELAY)) { 
+		CloseDoor();
+	}
+	
 }
 
