@@ -1,12 +1,8 @@
-// Copyright Ido Reshef 2017
-
 #pragma once
-
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "Engine/TriggerVolume.h"
+#include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INHERITANCECLASS_API UOpenDoor : public UActorComponent
