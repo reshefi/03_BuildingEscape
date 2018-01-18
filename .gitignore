@@ -16,4 +16,6 @@ inheritanceClass/Content/StarterContent/
 inheritanceClass/.vs/
 .vs
 *.VC.db
+*.VC.opendb
+*.sln
 inheritanceClass\.vs\inheritanceClass\v15
