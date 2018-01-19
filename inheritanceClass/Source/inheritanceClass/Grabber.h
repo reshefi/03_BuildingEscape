@@ -1,7 +1,5 @@
 
 #pragma once
-
-
 #include "CoreMinimal.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Components/ActorComponent.h"
@@ -9,15 +7,13 @@
 #include "DrawDebugHelpers.h"
 #include "Grabber.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class INHERITANCECLASS_API UGrabber : public UActorComponent
 {
-	GENERATED_BODY()
-
-public:	
+	public:	
 	// Sets default values for this component's properties
 	UGrabber();
+	GENERATED_BODY()
 
 protected:
 	// Called when the game starts
@@ -26,7 +22,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
+	
 private:
 	float Reach = 100.f;
 	UPhysicsHandleComponent * PhysicsHandle = nullptr;
@@ -44,7 +40,16 @@ private:
 	//Setup (assumed) attached input component
 	void SetupInputComponent();
 
+	
+
+
 	//  Return hit for first physics body in reach
 	FHitResult GetFirstPhysicsBodyInReach();
+	struct GRABPOS {
+		FVector PlayerViewPointLocation;
+		FRotator PlayerViewPointRotation;
+		FVector LineTraceEnd;
+	};
+	GRABPOS CalculateGrabbingPosition();
 
 };

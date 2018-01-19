@@ -1,4 +1,6 @@
+
 #pragma once
+
 #include "CoreMinimal.h"
 #include "Engine/TriggerVolume.h"
 #include "Components/ActorComponent.h"
@@ -34,8 +36,10 @@ private:
 	float DOOR_CLOSE_DELAY = 0.55f;
 
 	float LastDoorOpenTime;
-	AActor * ActorThatOpens;  // Remember pawn inherits from actor
-	
+		
 	float ANGLE_OF_DOOR_CLOSED = 270.f;
 	bool isDoorOpen = false;
+
+	//return total mass in Kg
+	float GetTotalOfMassOfActorsOnPlate();
 };
